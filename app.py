@@ -18,12 +18,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'apurv' # this key should be secured and also kept in private, so that it is not visible to all.
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    # with app.app_context():
-    #     db.init_app(app)
-    db.create_all() # it only creates a table that it sees, becoz it goes through all imports.
-    # so if any one is not present then the table for that won't get created.
 
 jwt = JWT(app, authenticate, identity) # JWT creates an endpoint /auth
 
